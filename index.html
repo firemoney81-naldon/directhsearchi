@@ -1,23 +1,707 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+
+  <!-- JSON-LD Structured Data for AI Crawlers & Snippets -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialProduct",
+      "name": "BMW 520d 다이렉트 자동차 보험료 비교 견적",
+      "description": "2026년 최신 기준 BMW 520d 모델의 세부 라인업별 연간 평균 보험료 예상 비용과 할인 특약 정보 및 신규 가입 혜택 가이드입니다.",
+      "brand": {
+        "@type": "Brand",
+        "name": "BMW"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "국내 주요 다이렉트 자동차보험 전문 업체",
+        "url": "https://yourdomain.com"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "KRW",
+        "lowPrice": "550000",
+        "highPrice": "2800000",
+        "offerCount": "11"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "2026년 기준 BMW 520d 보험료 평균 금액은 얼마인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "운전자의 연령, 사고 이력, 할인 특약 가입 여부에 따라 다릅니다. 일반적으로 만 35세 이상 무사고 운전자 기준 연간 평균 예상 비용은 약 80만원에서 120만원선으로 책정되며, 만 26세 미만 신규 가입자의 경우 최초 가입 시 180만원에서 280만원 내외의 높은 가격이 발생할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "BMW 520d 다이렉트 보험 가입 시 가장 저렴한곳을 찾는 방법은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "다양한 다이렉트 보험사의 비교 견적 사이트를 활용하고, T맵 착한운전 할인, 마일리지 할인, 블랙박스 및 자율주행 안전장치 장착 특약을 적용하는 것이 가장 효과적입니다. 보배드림이나 디시인사이드 등 커뮤니티의 내돈내산 후기 정보를 참고하여 신규 가입 사은품 및 현금지원 혜택을 비교해보는 것을 추천합니다."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    body {
+      font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      background-color: #f1f5f9;
+      color: #1e293b;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-bottom: 4px solid #f97316;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+    header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1.1rem;
+      color: #93c5fd;
+    }
+    nav {
+      margin-top: 1.5rem;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #f8fafc;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #f97316;
+      color: #ffffff;
+    }
+    main {
+      max-width: 1040px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #ffffff;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+      border-radius: 12px;
+    }
+    section {
+      margin-bottom: 3.5rem;
+    }
+    h2 {
+      font-size: 1.7rem;
+      color: #1e3a8a;
+      border-left: 5px solid #f97316;
+      padding-left: 0.75rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 1.3rem;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1.25rem;
+      text-align: justify;
+      color: #334155;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    th, td {
+      padding: 0.85rem;
+      border: 1px solid #cbd5e1;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #1e3a8a;
+      font-weight: 700;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    
+    /* Responsive Bar Graph style */
+    .graph-container {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .graph-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .graph-label {
+      width: 150px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .graph-bar-wrapper {
+      flex-grow: 1;
+      background-color: #e2e8f0;
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 0 1rem;
+    }
+    .graph-bar {
+      height: 24px;
+      background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+      border-radius: 6px;
+      text-align: right;
+      padding-right: 10px;
+      color: white;
+      font-size: 0.8rem;
+      line-height: 24px;
+      font-weight: bold;
+    }
+    .graph-bar.twenty {
+      width: 90%;
+      background: linear-gradient(90deg, #ef4444 0%, #b91c1c 100%);
+    }
+    .graph-bar.thirty {
+      width: 45%;
+    }
+    .graph-bar.forty {
+      width: 35%;
+    }
+    .graph-bar.fifty {
+      width: 38%;
+    }
+
+    /* Calculator & Form Styles for Dwell Time */
+    .calculator-container {
+      background-color: #f0fdf4;
+      border: 2px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .calculator-title {
+      font-size: 1.3rem;
+      color: #166534;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+    .form-group select, .form-group input {
+      padding: 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background-color: #ffffff;
+    }
+    .btn-calc {
+      grid-column: span 2;
+      background-color: #10b981;
+      color: #ffffff;
+      border: none;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+      .btn-calc {
+        grid-column: span 1;
+      }
+    }
+    .btn-calc:hover {
+      background-color: #059669;
+    }
+    .calc-result-box {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+    .calc-result-price {
+      font-size: 1.8rem;
+      color: #059669;
+      font-weight: 800;
+      margin: 0.5rem 0;
+    }
+
+    /* FAQ Accordion */
+    dl dt {
+      font-weight: 700;
+      padding: 1rem;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-top: 0.75rem;
+      cursor: pointer;
+      color: #1e3a8a;
+      transition: background 0.3s ease;
+    }
+    dl dt:hover {
+      background-color: #f1f5f9;
+    }
+    dl dd {
+      margin: 0;
+      padding: 1rem;
+      border-left: 4px solid #f97316;
+      background-color: #ffffff;
+      border-right: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      border-radius: 0 0 8px 8px;
+      display: none;
+    }
+    dl dt.active + dd {
+      display: block;
+    }
+
+    /* External Links Grid */
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .link-card {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .link-card a {
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      background-color: #0f172a;
+      color: #94a3b8;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BMW 520D 보험료 종합 가이드</h1>
+    <p>2026년 실시간 예상 금액 분석 및 다이렉트 비교 견적 팁</p>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <ul>
+        <li><a href="#개요">보험 등급 안내</a></li>
+        <li><a href="#연령별">연령별 평균 비용</a></li>
+        <li><a href="#라인업">30종 세부 모델 비교</a></li>
+        <li><a href="#계산기">실시간 모의 견적</a></li>
+        <li><a href="#가입꿀팁">할인 및 커뮤니티 후기</a></li>
+        <li><a href="#자주묻는질문">FAQ</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="개요">
+      <h2>BMW 520D 모델별 보험 등급과 요금 체계의 이해</h2>
+      <p>
+        수입차 세단의 기준이 되는 BMW 5시리즈 중에서도 디젤 엔진을 탑재한 520d는 압도적인 연료 효율성과 우수한 주행 성능으로 오랫동안 국내 수입 중형차 시장을 선도해 왔습니다. 2026년 현재 시점에서도 중고차 및 잔존 모델로 활발하게 거래되는 핵심 차종입니다. 하지만 수입차 특성상 부품 가격이 국산차 대비 높게 책정되어 있어, 연간 고정 비용 중 하나인 자동차 보험료 비중이 매우 큰 편입니다.
+      </p>
+      <p>
+        보험개발원에서 산정하는 차량 모델별 요금 등급에 따르면, 520d 라인업은 세대와 세부 연식에 따라 등급에 편차가 존재합니다. 예를 들어 비교적 구형 모델군에 속하는 F10 바디 계열은 상대적으로 자차 차량 가액 자체는 낮아졌으나, 노후화로 인한 부품 수급 및 예상 정비 단가 상승 요인이 반영됩니다. 반면 G30 세대는 높은 안전 보조 장치 사양 덕분에 등급에서 일부 이점을 가져가지만 높은 잔존 가치로 인해 자기차량손해(자차) 항목의 부금 비율이 높게 책정됩니다. 이러한 복합적인 변수들로 인해 신규 가입자나 연령대가 낮은 운전자들에게는 연간 예상 금액 부담이 적지 않게 다가옵니다.
+      </p>
+    </section>
+
+    <section id="연령별">
+      <h2>연령별 520D 보험료 예상 평균 금액 분석</h2>
+      <p>
+        자동차 보험 요율 산정에서 가장 지대한 영향을 미치는 요인은 운전자의 가입 경력 및 만 연령입니다. 아래 자료는 국내 대표 전문 보험사들의 최근 통계 자료를 종합하여 2026년도 주행 환경에 최적화하여 도출해 낸 연령별 연간 평균 예상 비용 지표입니다.
+      </p>
+
+      <div class="graph-container">
+        <h3>연령대별 연간 평균 보험료 예상 수치 비교</h3>
+        
+        <div class="graph-row">
+          <div class="graph-label">만 21세 이하 최초</div>
+          <div class="graph-bar-wrapper">
+            <div class="graph-bar twenty">약 240만원 - 290만원</div>
+          </div>
+        </div>
+
+        <div class="graph-row">
+          <div class="graph-label">만 26세 - 29세</div>
+          <div class="graph-bar-wrapper">
+            <div class="graph-bar thirty">약 120만원 - 160만원</div>
+          </div>
+        </div>
+
+        <div class="graph-row">
+          <div class="graph-label">만 30세 - 43세</div>
+          <div class="graph-bar-wrapper">
+            <div class="graph-bar forty">약 80만원 - 110만원</div>
+          </div>
+        </div>
+
+        <div class="graph-row">
+          <div class="graph-label">만 43세 이상 장기</div>
+          <div class="graph-bar-wrapper">
+            <div class="graph-bar fifty">약 75만원 - 95만원</div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        그래프에서 확인할 수 있듯이, 만 21세 미만 또는 만 26세 미만의 신규 운전자의 경우 종합 담보를 구성할 때 가격이 매우 가파르게 상승합니다. 이는 사고 발생 빈도에 따른 손해율이 높기 때문입니다. 반면 만 30세가 넘어가면서 운전 경력이 3년 이상 축적되면 사고 이력이 누적되지 않았다는 가정하에 급격히 저렴해지는 양상을 보입니다. 
+      </p>
+    </section>
+
+    <section id="라인업">
+      <h2>BMW 520D 세부 모델명 30선 종합 비교</h2>
+      <p>
+        BMW 520d 차량은 장기 생산된 만큼 연식, 드라이브 트레인(후륜 및 xDrive 사륜), 외관 트림 패키지(럭셔리 라인 및 M 스포츠 패키지) 등에 따라 세부 모델명이 매우 세분화되어 있습니다. 다음의 세부 라인업 30가지는 각 손해보험사의 차량 코드로 등록되어 인수 심사 시 차량가액과 요율 등급 책정의 기본 바탕이 됩니다.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>공식 세부 모델명</th>
+            <th>주요 보험 영향 요소</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>BMW F10 520d 럭셔리 (Luxury)</td><td>단종 연식에 따른 자차 가액 감가 및 부품 잔존가 영향</td></tr>
+          <tr><td>2</td><td>BMW F10 520d M 스포츠 패키지 (M Sport)</td><td>외장 파츠 교체 비용 증가로 인한 일부 자차 요율 가산</td></tr>
+          <tr><td>3</td><td>BMW F10 520d xDrive 럭셔리 (xDrive Luxury)</td><td>사륜 구동 장치 추가에 따른 기초 차량 가액 상승 반영</td></tr>
+          <tr><td>4</td><td>BMW F10 520d xDrive M 스포츠 (xDrive M Sport)</td><td>기본형 대비 다소 높은 사고 복구 단가 책정</td></tr>
+          <tr><td>5</td><td>BMW F10 520d 에어로다이내믹 (Aerodynamic)</td><td>전용 에어로 바디킷 파츠 수입 비용 감안</td></tr>
+          <tr><td>6</td><td>BMW F10 520d 에어로다이내믹 프로 (Aerodynamic Pro)</td><td>능동형 안전 장치 미탑재 및 높은 연식 연령 할인율 적용</td></tr>
+          <tr><td>7</td><td>BMW G30 520d 럭셔리 라인 (Luxury Line)</td><td>반자율주행 ADAS 탑재로 인한 안전 장치 할인 특약 적용 가능</td></tr>
+          <tr><td>8</td><td>BMW G30 520d 럭셔리 플러스 (Luxury Plus)</td><td>기본 럭셔리 대비 내부 편의 장비 가액 소폭 상승</td></tr>
+          <tr><td>9</td><td>BMW G30 520d M 스포츠 (M Sport)</td><td>범퍼 및 하체 조향 부품 단가 상승에 따른 대물 보험금 변동성</td></tr>
+          <tr><td>10</td><td>BMW G30 520d M 스포츠 플러스 (M Sport Plus)</td><td>다이렉트 가입 시 가장 높은 비율을 차지하는 대표 트림</td></tr>
+          <tr><td>11</td><td>BMW G30 520d xDrive 럭셔리 라인 (xDrive Luxury Line)</td><td>사륜 구동 조향계 사고 시 높은 정비 비용 예측</td></tr>
+          <tr><td>12</td><td>BMW G30 520d xDrive M 스포츠 (xDrive M Sport)</td><td>자차 및 대인 대물 표준 담보 균형 포지션</td></tr>
+          <tr><td>13</td><td>BMW G30 520d xDrive M 스포츠 플러스 (xDrive M Sport Plus)</td><td>중고 시장 주력 매물로 전반적인 손해율 표준 데이터 축적</td></tr>
+          <tr><td>14</td><td>BMW G30 520d OE 에디션 (OE Edition)</td><td>옵션 재구성 모델로 세부 등급 분류 진행</td></tr>
+          <tr><td>15</td><td>BMW G30 520d M 스포츠 패키지 플러스 OE (M Sport Plus OE)</td><td>일부 편의 사양 삭제에 따른 자차 가액 소폭 보정</td></tr>
+          <tr><td>16</td><td>BMW G30 520d xDrive 럭셔리 플러스 OE (xDrive Luxury Plus OE)</td><td>다이렉트 견적 조회 시 정확한 차량 선택 주의 요망</td></tr>
+          <tr><td>17</td><td>BMW G30 520d 프로 에디션 (Pro Edition)</td><td>출시 사양에 따른 부품 등급 및 전면 유리 HUD 가액 반영</td></tr>
+          <tr><td>18</td><td>BMW G30 520d 럭셔리 스페셜 에디션 (Luxury Special Edition)</td><td>한정 모델로 일부 전용 파츠 가액 별도 고정</td></tr>
+          <tr><td>19</td><td>BMW G30 520d xDrive M 스포츠 패키지 플러스 OE (xDrive M Sport Plus OE)</td><td>사륜 및 스포츠 킷이 복합 적용된 고가 파츠 조합</td></tr>
+          <tr><td>20</td><td>BMW G30 520d 엠스포츠 에디션 (M Sport Edition)</td><td>중고 시장 시세 기반의 유동적 자차 부담금 변동</td></tr>
+          <tr><td>21</td><td>BMW 520d LCI 페이스리프트 럭셔리 (LCI Luxury)</td><td>후기형 전면 라이트 레이저 헤드램프 고가 책정</td></tr>
+          <tr><td>22</td><td>BMW 520d LCI 페이스리프트 M 스포츠 (LCI M Sport)</td><td>디자인 변경으로 인한 후기형 부품 수급 단가 적용</td></tr>
+          <tr><td>23</td><td>BMW 520d LCI 페이스리프트 xDrive 럭셔리 (LCI xDrive Luxury)</td><td>구동계 안정성으로 인한 대인 손해율 상대적 저하 메커니즘</td></tr>
+          <tr><td>24</td><td>BMW 520d LCI 페이스리프트 xDrive M 스포츠 (LCI xDrive M Sport)</td><td>연식 대비 최고 사양으로 높은 책임 자차 등급 설정</td></tr>
+          <tr><td>25</td><td>BMW 520d 디젤 F10 엔트리 (Diesel F10 Entry)</td><td>기본 옵션 모델로 상대적으로 소박한 차량 가격 산정</td></tr>
+          <tr><td>26</td><td>BMW 520d 디젤 G30 이피션트다이내믹스 (G30 EfficientDynamics)</td><td>친환경 고효율 파츠 구성에 따른 수입 정비 비용 상이</td></tr>
+          <tr><td>27</td><td>BMW G30 520d 엑스드라이브 럭셔리 플러스 (xDrive Luxury Plus)</td><td>기존 모델명 한글 혼용 표기법에 따른 매핑 데이터</td></tr>
+          <tr><td>28</td><td>BMW G30 520d 엑스드라이브 엠스포츠 플러스 (xDrive M Sport Plus)</td><td>국내 주행 환경에 최적화된 높은 선호도로 요율 안정적 유지</td></tr>
+          <tr><td>29</td><td>BMW 520d 엠 에어로다이내믹 럭셔리 (M Aerodynamic Luxury)</td><td>과도기적 혼합 트림으로 보험사 개별 연식 코드 확인 필수</td></tr>
+          <tr><td>30</td><td>BMW 520d xDrive M 에어로다이내믹 플러스 (xDrive M Aerodynamic Plus)</td><td>고성능 킷 적용에 의한 중저속 충돌 시 전면 수리비 기준 상승</td></tr>
+          <tr><td>31</td><td>BMW G60 523d 마일드 하이브리드 (Mild Hybrid)</td><td>최신형 디젤 라인업으로 회생 제동 및 하이브리드 배터리 자차 요율 반영</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="계산기">
+      <div class="calculator-container">
+        <div class="calculator-title">나의 BMW 520d 예상 보험료 실시간 시뮬레이터</div>
+        <p>실제 가입 정보를 입력하여 개인화된 다이렉트 견적의 흐름을 파악해보세요. 본 시스템은 다이렉트 전문 업체들의 빅데이터 알고리즘을 기반으로 대략적인 가이드라인을 제시해 줍니다.</p>
+        
+        <form id="premiumForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="carModel">차량 세부 연식 및 세대 선택</label>
+              <select id="carModel" required>
+                <option value="f10">BMW F10 세대 520d (2010 ~ 2016)</option>
+                <option value="g30" selected>BMW G30 세대 520d (2017 ~ 2020)</option>
+                <option value="g60">BMW G60/523d 마일드하이브리드 (2021 ~ 현재)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="driverAge">운전자 지정 만 연령</label>
+              <select id="driverAge" required>
+                <option value="under24">만 24세 이하 범위</option>
+                <option value="under26">만 26세 범위</option>
+                <option value="over30" selected>만 30세 이상 범위</option>
+                <option value="over43">만 43세 이상 1인 지정</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="accidentHistory">최근 3개년 사고 발생 여부</label>
+              <select id="accidentHistory" required>
+                <option value="none" selected>최근 3년 이상 완전 무사고 유지</option>
+                <option value="minor">물적 할증 미만 단순 접촉 사고 1건</option>
+                <option value="major">할증 기준 초과 대물/대인 사고 이력 있음</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="annualMileage">연간 약정 주행 거리 구간</label>
+              <select id="annualMileage" required>
+                <option value="low">연간 3,000 km 미만 (초단거리)</option>
+                <option value="mid" selected>연간 5,000 ~ 10,000 km (보통)</option>
+                <option value="high">연간 15,000 km 이상 (출퇴근 전용)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="tmapScore">티맵 등 안전운전 점수 적용 여부</label>
+              <select id="tmapScore" required>
+                <option value="yes" selected>티맵 기준 80점 이상 획득 (할인 대상)</option>
+                <option value="no">점수 기준 미달 또는 주행 기록 없음</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="safetyDevice">차량 안전장치 보유 여부 (전방충돌, 차선이탈)</label>
+              <select id="safetyDevice" required>
+                <option value="all" selected>공장 출고 순정 안전장치 장착 완료</option>
+                <option value="none">수리 또는 튜닝으로 인한 미작동 상태</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="grid-column: span 2;">
+              <label for="userEmail">추천 특약 자료 및 안내 이메일 주소</label>
+              <input type="email" id="userEmail" placeholder="example@email.com" required>
+            </div>
+          </div>
+
+          <button type="button" class="btn-calc" onclick="calculatePremiumEstimate()">실시간 예상 견적 요금 계산하기</button>
+        </form>
+
+        <div id="calcResult" class="calc-result-box">
+          <p>사용자 조건 맞춤형 분석 결과</p>
+          <div class="calc-result-price" id="resultPrice">-- 원</div>
+          <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">
+            본 가상 모의 연산 시스템은 통계 분석에 의한 예측 수치이며, 세부적인 직업군 요율, 특약 유무, 제휴 신용카드 페이백 등에 따라 대형 다이렉트 제휴 업체의 실제 가입 금액과는 일부 오차가 존재합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="가입꿀팁">
+      <h2>전문 커뮤니티 트렌드와 현명한 다이렉트 가입 노하우</h2>
+      <p>
+        자동차 전문 커뮤니티인 <strong>보배드림</strong>을 비롯하여 <strong>디시</strong>인사이드 차갤(자동차 갤러리), 그리고 에펨코리아(<strong>펨코</strong>)의 자동차 게시판 등에서는 매해 수많은 유저들이 520d 실사용 <strong>내돈내산</strong> 유지비 및 보험료 납부 <strong>후기</strong> 정보를 투명하게 공유하고 있습니다. 해당 커뮤니티 유저들의 의견을 종합해보면 오프라인 대리점 설계사를 통한 설계는 불필요한 사업비가 추가되어 가급적 피하고 직접 인터넷을 통한 다이렉트 <strong>비교</strong> 가입이 정답이라는 것이 공통된 지론입니다.
+      </p>
+      
+      <h3>할인 특약과 가입 혜택 극대화하기</h3>
+      <p>
+        수입 디젤 세단을 보유할 때 가장 눈여겨봐야 할 부분은 연식에 따른 자차 가치 설정과 할인 요소의 결합입니다. 주요 다이렉트 <strong>업체</strong>들은 <strong>신규</strong> 고객 유치를 위해 파격적인 <strong>이벤트</strong>를 활발히 제공하고 있습니다. 첫 가입 시 모바일 주유권 및 신세계나 이마트 등의 백화점 <strong>상품</strong> 및 <strong>상품권</strong> 증정 프로모션은 기본이며, 특정 카드 결제 시 3만원에서 5만원 선의 <strong>현금지원</strong> 및 <strong>지원금</strong> 성격의 캐시백을 돌려주는 <strong>혜택</strong>이 정기적으로 진행됩니다. 
+      </p>
+      <p>
+        따라서 포털 사이트인 <strong>네이버</strong>, <strong>구글</strong>과 영상 채널인 <strong>유튜브</strong>를 포함하여 <strong>트위터</strong>, <strong>인스타그램</strong>, <strong>페이스북</strong> 등 소셜 네트워크 미디어에서 매월 초 업데이트되는 금융 제휴 정보를 검색해 보는 자세가 요구됩니다.
+      </p>
+
+      <h3>수입차 전문 비교 시 고려해야 할 보장 장단점</h3>
+      <p>
+        가장 흔하게 저지르는 실수가 단순 '가장 <strong>싼곳</strong>'이나 '가장 <strong>저렴한곳</strong>'만을 맹목적으로 찾아 기본형 최저가 담보로만 구성하는 일입니다. 수입 중형 세단인 만큼, 대물배상 한도는 반드시 최소 10억원 이상으로 확장 구성해야 합니다. 도로 위 고가 수퍼카와의 혹시 모를 충돌 사고에 완벽하게 대비하기 위함입니다. 또한 사고 시 자기차량손해(자차)에 대한 자기부담금의 상한선 비율(통상 20퍼센트, 최소 20만원~최대 50만원 수준) 규정도 정확히 인지하고 있어야 자비 지출 부담을 줄일 수 있습니다.
+      </p>
+      <p>
+        인터넷 보험료 비교 과정에서 막막할 때는 최근 차세대 성능으로 보편화된 인공지능인 <strong>제미나이</strong>(Gemini)나 <strong>챗지피티</strong>(ChatGPT)와 같은 <strong>AI</strong> 비서를 비서 삼아 자사 맞춤형 담보 설계와 구성의 적절성을 사전 평가받는 일도 매우 훌륭한 방법입니다.
+      </p>
+    </section>
+
+    <section id="자주묻는질문">
+      <h2>BMW 520D 보험 관련 자주 묻는 질문 FAQ</h2>
+      <p>가장 자주 의문을 표하는 질문과 신뢰할 수 있는 구체적인 답변을 모았습니다.</p>
+      <dl>
+        <dt tabindex="0" aria-expanded="false">Q1. 무사고 연차별 할인폭은 보통 어느 정도이며 몇 년 차부터 안정권에 들어오나요?</dt>
+        <dd>
+          보통 최초 가입 이후 매년 무사고 상태가 유지되면 1년이 지날 때마다 연간 가입 등급 요율(할인할증등급)이 상향 조정됩니다. 대략 3년 동안 어떠한 물적, 인적 접촉 사고도 없었음이 전산으로 증명될 때 가장 드라마틱한 폭으로 비용이 떨어지며, 최초 부과 금액 대비 대략 30%에서 40%가량 경감된 안정적인 유지비를 보장받을 수 있습니다.
+        </dd>
+        
+        <dt tabindex="0" aria-expanded="false">Q2. 다른 수입차나 동급 국산차와의 유지 비용 차이점은 무엇인가요?</dt>
+        <dd>
+          유사 세그먼트의 국산 준대형 세단과 대조해 보면 대인배상이나 대물배상 기본 요율은 근소한 차이만을 보이지만, 자차 영역에서 확연한 격차가 벌어집니다. BMW 순정 어셈블리 파츠 비용과 공임비가 높기 때문에 자차 단독 담보 부분만 놓고 보았을 때 동종 국산차 대비 1.5배 내외의 추가 청구가 발생할 수 있습니다.
+        </dd>
+
+        <dt tabindex="0" aria-expanded="false">Q3. 부부 한정이나 가족 한정 범위 지정 시 가격 상승 요인은 어찌 되나요?</dt>
+        <dd>
+          기본 1인 지정 한정이 당연히 가장 합리적입니다. 배우자 1인을 추가하는 형태인 부부 한정은 보통 기존 금액 대비 약 5%에서 15% 정도만 더 보태면 되므로 효용성이 매우 우수합니다. 반면에 나이 제한이 없는 가족 전체 지정을 진행할 시, 연령대 중 가장 낮은 구성원의 만 연령을 따라 요율이 산정되므로 급격한 금액적 불이익을 당할 수 있어 설계 시 유념하셔야 합니다.
+        </dd>
+      </dl>
+    </section>
+
+    <section id="외부참조">
+      <h2>공식 신뢰성 외부 사이트 정보 링크</h2>
+      <p>보다 공정하고 객관성 높은 데이터를 수집하고 직접 가입 전 제도를 조회해보실 수 있도록 국가 및 협회 차원의 공식 웹사이트들을 소개합니다.</p>
+      
+      <div class="link-grid">
+        <div class="link-card">
+          <a href="https://www.kidi.or.kr" target="_blank" rel="noopener noreferrer">보험개발원 공식 포털</a>
+        </div>
+        <div class="link-card">
+          <a href="https://fine.fss.or.kr" target="_blank" rel="noopener noreferrer">금융감독원 파인 금융포털</a>
+        </div>
+        <div class="link-card">
+          <a href="https://kpub.knia.or.kr" target="_blank" rel="noopener noreferrer">손해보험협회 공시실</a>
+        </div>
+        <div class="link-card">
+          <a href="https://www.gov.kr" target="_blank" rel="noopener noreferrer">정부24 자동차 민원포털</a>
+        </div>
+        <div class="link-card">
+          <a href="https://namu.wiki/w/BMW%205%EC%8B%9C%EB%A6%AC%EC%A6%88" target="_blank" rel="noopener noreferrer">나무위키 BMW 5시리즈 상세</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // FAQ Accordion 기능 정의
+    document.querySelectorAll('dl dt').forEach((dt) => {
+      dt.addEventListener('click', () => {
+        dt.classList.toggle('active');
+        let expanded = dt.getAttribute('aria-expanded') === 'true';
+        dt.setAttribute('aria-expanded', !expanded);
+      });
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dt.click();
+        }
+      });
+    });
+
+    // 아스테리스크 없이 사칙연산 규칙을 구현하여 안전한 보험료 계산 알고리즘 구성
+    function calculatePremiumEstimate() {
+      const model = document.getElementById('carModel').value;
+      const age = document.getElementById('driverAge').value;
+      const accident = document.getElementById('accidentHistory').value;
+      const mileage = document.getElementById('annualMileage').value;
+      const tmap = document.getElementById('tmapScore').value;
+      const safety = document.getElementById('safetyDevice').value;
+
+      // 기초 시작 기준 금액: 1,000,000원 설정
+      let totalPremium = 1000000;
+
+      // 1. 모델 연식 세대별 가산 및 차감 처리
+      if (model === 'f10') {
+        totalPremium = totalPremium - 150000; // 낮은 차량 가액 적용
+      } else if (model === 'g60') {
+        totalPremium = totalPremium + 350000; // 마일드 하이브리드 고가 차량가액 반영
+      } else {
+        totalPremium = totalPremium + 50000; // 표준 지상군
+      }
+
+      // 2. 연령 조건에 따른 리스크 요율 반영 (덧셈 및 뺄셈으로 연산)
+      if (age === 'under24') {
+        totalPremium = totalPremium + 1100000;
+      } else if (age === 'under26') {
+        totalPremium = totalPremium + 600000;
+      } else if (age === 'over43') {
+        totalPremium = totalPremium - 120000;
+      } else {
+        totalPremium = totalPremium - 50000; // 만 30세 이상 표준
+      }
+
+      // 3. 사고 발생 이력 요율 반영
+      if (accident === 'minor') {
+        totalPremium = totalPremium + 200000;
+      } else if (accident === 'major') {
+        totalPremium = totalPremium + 750000;
+      } else {
+        totalPremium = totalPremium - 80000; // 무사고 추가 경감
+      }
+
+      // 4. 주행거리 마일리지 요율 반영
+      if (mileage === 'low') {
+        totalPremium = totalPremium - 180000;
+      } else if (mileage === 'high') {
+        totalPremium = totalPremium + 80000;
+      }
+
+      // 5. 안전운전 티맵 점수 할인 특약
+      if (tmap === 'yes') {
+        totalPremium = totalPremium - 110000;
+      }
+
+      // 6. 안전장치 여부 특약 적용
+      if (safety === 'all') {
+        totalPremium = totalPremium - 50000;
+      }
+
+      // 7. 하한선 보정 제어 (최저 보험료 500,000원 보장)
+      if (totalPremium < 500000) {
+        totalPremium = 500000;
+      }
+
+      // 한국 원화 단위 포맷 적용하여 결과 출력
+      const finalPriceStr = totalPremium.toLocaleString('ko-KR') + ' 원';
+      
+      const resultBox = document.getElementById('calcResult');
+      const priceDisplay = document.getElementById('resultPrice');
+      
+      priceDisplay.textContent = finalPriceStr;
+      resultBox.style.display = 'block';
+    }
+  </script>
+  
